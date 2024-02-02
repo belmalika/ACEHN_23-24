@@ -14,9 +14,13 @@
 <script type="module">
     import {posiColor} from './modules/posiColor.js';
 
-    let data, urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
+    let data, 
+        //urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
+        urlData = "data/fr-en-evaluations_nationales_6eme_region.csv",
         width = 600, height=100, widthLibTxt=100, svg,
-        pVal='cpx',pLib='dim',pFreq='nbCpx',
+        //pVal='cpx',pLib='dim',pFreq='nbCpx',
+        pVal='Score moyen',pLib='Matière',pFreq='Ecart type',
+        
         interpolates = false;
         /*{
                 'Existence':d3.interpolateViridis,
@@ -26,7 +30,8 @@
                 'Rapport':d3.interpolateYlOrRd
             };
         */
-    d3.json(urlData).then(rs=>{
+    //d3.json(urlData).then(rs=>{
+    d3.csv(urlData).then(rs=>{
         console.log(rs);
         data = setData(rs);
         console.log(data);
@@ -51,7 +56,7 @@
     function setGraph(data){
         //liste des echelle de couleurs : https://d3js.org/d3-scale-chromatic/sequential
         let pc = new posiColor({'data':data,'cont':d3.select('#resultat')
-            , 'pVal':pVal,'pLib':pLib, 'pFreq':pFreq,'frequency':true
+            , 'pVal':pVal,'pLib':pLib, 'pFreq':pFreq,'frequency':false
             , 'interpolates':interpolates        
         })
     }    

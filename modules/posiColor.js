@@ -87,7 +87,7 @@ export class posiColor {
                         me.legendes[d[me.pLib]] = Legend(d3.select("#gData_"+i), me.colors[d[me.pLib]], {
                             title: d[me.pLib],
                             width:width-10,
-                            tickFormat: "~s",
+                            //tickFormat: "~s",
                             height:scBandY.bandwidth()
                           })
                     }else{
