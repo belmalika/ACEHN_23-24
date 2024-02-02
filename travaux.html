@@ -73,10 +73,13 @@
             divEchelle = d3.select('#echelles');
 
         //initialise l'affichage
+        divProjet.selectAll("h4").remove();
         divProjet.selectAll("h5").remove();
         divDim.selectAll("div").remove();
         divEchelle.selectAll("div").remove();
+        divEchelle = divEchelle.append('div')
         //affiche l'url du repository
+        divProjet.append('h4').text('Modélisations éthiques')
         divProjet.selectAll("h5").data([urlRepo,urlPages]).enter().append('h5').append('a')
             .attr('href',d=>{
                 return d;
@@ -89,9 +92,10 @@
         dims.append('iframe').attr('title',d=>'Dimensions = '+d)
             .attr('src',d=>urlPages+"/modelisations/"+etu.id+'-'+d+'.svg');
         //affiche le travaille sur les échelles
-        divEchelle.append('div').append('h4').html(d=>'Echelles');
+        divEchelle.append('h4').html(d=>'Echelles');
+        divEchelle.append('h5').html("https://"+etu.github+'.github.io/echelles/echelle.html');
         divEchelle.append('iframe').attr('title',d=>'Echelles')
-            .attr('src',d=>"https://"+etu.github+'.github.io/echelles/echelle.html');
+            .attr('src',"https://"+etu.github+'.github.io/echelles/echelle.html');
 
     }
 </script>
