@@ -12,6 +12,7 @@ export class posiColor {
         this.color = params.color ? params.color : d3.interpolateViridis;
         this.interpolates = params.interpolates ? params.interpolates : false;
         this.frequency = params.frequency ? params.frequency : false;
+        this.tickFormat = params.tickFormat ? params.tickFormat : d3.format(",.0f");
         this.colors = {};
         this.legendes={};
         // Specify the chart’s position.
@@ -87,7 +88,7 @@ export class posiColor {
                         me.legendes[d[me.pLib]] = Legend(d3.select("#gData_"+i), me.colors[d[me.pLib]], {
                             title: d[me.pLib],
                             width:width-10,
-                            //tickFormat: "~s",
+                            tickFormat: me.tickFormat,
                             height:scBandY.bandwidth()
                           })
                     }else{
@@ -95,7 +96,8 @@ export class posiColor {
                         me.legendes[d[me.pLib]] = Legend(d3.select("#gData_"+i), me.colors[d[me.pLib]], {
                             title: d[me.pLib],
                             width:width-10,
-                            height:scBandY.bandwidth()
+                            height:scBandY.bandwidth(),
+                            tickFormat: me.tickFormat
                           })
                     }
                 });
